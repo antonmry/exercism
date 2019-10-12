@@ -1,71 +1,37 @@
-import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static org.junit.Assert.assertEquals;
-
 public class House {
 
-    private final static String[] SONG = {
-            "This is the horse and the hound and the horn",
-            "belonged to the farmer sowing his corn",
-            "kept the rooster that crowed in the morn",
-            "woke the priest all shaven and shorn",
-            "married the man all tattered and torn",
-            "kissed the maiden all forlorn",
-            "milked the cow with the crumpled horn",
-            "tossed the dog",
-            "worried the cat",
-            "killed the rat",
-            "ate the malt",
-            "lay in the house that Jack built.",
-    };
+    private static final String[] NAMES = {"house that Jack built", "malt", "rat", "cat", "dog",
+            "cow with the crumpled horn", "maiden all forlorn", "man all tattered and torn",
+            "priest all shaven and shorn", "rooster that crowed in the morn", "farmer sowing his corn",
+            "horse and the hound and the horn"};
+
+    private static final String[] VERBS = {"lay in", "ate", "killed", "worried", "tossed", "milked", "kissed",
+            "married", "woke", "kept", "belonged to"};
 
     public String verse(int verse) {
-        return Arrays.stream(sing().split("\\n"))
-                .skip(verse - 1)
-                .limit(1)
-                .collect(Collectors.joining());
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("This is the ").append(NAMES[verse - 1]);
+
+        for (int i = verse - 1; i > 0; i--) {
+            sb.append(" that ").append(VERBS[i - 1]).append(" the ").append(NAMES[i - 1]);
+        }
+
+        return sb.append(".").toString();
     }
 
     public String verses(int startVerse, int endVerse) {
+        StringBuilder sb = new StringBuilder();
 
-        return Arrays.stream(sing().split("\\n"))
-                .skip(startVerse - 1)
-                .limit(endVerse - startVerse + 1)
-                .collect(Collectors.joining("\n"));
+        for (int i = startVerse; i < endVerse; i++) {
+            sb.append(verse(i)).append(System.getProperty("line.separator"));
+        }
+
+        return sb.append(verse(endVerse)).toString();
     }
 
     public String sing() {
-        return sing(SONG.length);
+        return verses(1, NAMES.length);
     }
-
-    private String sing(int verses) {
-        return printFirstVerse(SONG[SONG.length - verses]) + "\n" +
-                IntStream.range(SONG.length - verses + 1, SONG.length)
-                        .mapToObj(i -> printNormalVerse(SONG[i]))
-                        .collect(Collectors.joining("\n"));
-    }
-
-    private String printNormalVerse(String s) {
-        return "that " + s;
-    }
-
-    private String printFirstVerse(String s) {
-        return "This is " + s.substring(s.indexOf("the"));
-    }
-
-    /**
-     *This is the house that Jack built.
-     *
-     * This is the malt
-     * that lay in the house that Jack built.
-     *
-     * This is the rat
-     * that ate the malt
-     * that lay in the house that Jack built.
-     */
-
 }
