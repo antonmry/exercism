@@ -11,9 +11,6 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -91,6 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1570883827749</updated>
       <workItem from="1570883831186" duration="2374000" />
+      <workItem from="1570908309371" duration="600000" />
     </task>
     <servers />
   </component>

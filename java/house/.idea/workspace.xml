@@ -31,6 +31,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../food-chain" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -91,6 +92,7 @@
       <workItem from="1570539485301" duration="619000" />
       <workItem from="1570607116514" duration="380000" />
       <workItem from="1570607530365" duration="356000" />
+      <workItem from="1570909106236" duration="16000" />
     </task>
     <servers />
   </component>
