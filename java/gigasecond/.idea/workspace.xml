@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc41e05c-6eba-429a-aefb-340eeb167a28" name="Default Changelist" comment="" />
+    <list default="true" id="e4ee6a9f-b08e-43e1-83a1-d8c4894dd55f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +11,9 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -19,7 +22,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1S7LIVlcp5yleaPip83PnVMS1yD" />
+  <component name="ProjectId" id="1S7R8LMVbMVVklt3QbSHO2anwiG" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -43,12 +46,12 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="GrainsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GigasecondTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;GrainsTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;GigasecondTest&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -65,7 +68,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GrainsTest" />
+        <item itemvalue="Gradle.GigasecondTest" />
       </list>
     </recent_temporary>
   </component>
@@ -82,13 +85,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fc41e05c-6eba-429a-aefb-340eeb167a28" name="Default Changelist" comment="" />
-      <created>1570909607691</created>
+      <changelist id="e4ee6a9f-b08e-43e1-83a1-d8c4894dd55f" name="Default Changelist" comment="" />
+      <created>1570912486261</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570909607691</updated>
-      <workItem from="1570909609567" duration="795000" />
-      <workItem from="1570911797989" duration="696000" />
+      <updated>1570912486261</updated>
+      <workItem from="1570912489073" duration="575000" />
     </task>
     <servers />
   </component>
