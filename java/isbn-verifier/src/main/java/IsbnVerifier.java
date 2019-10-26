@@ -2,23 +2,29 @@ import java.util.stream.IntStream;
 
 class IsbnVerifier {
 
-    boolean isValid(String stringToVerify) {
+    public static final int ISBN_LENGTH = 10;
 
-        String isbn = stringToVerify.replace("-", "");
+    boolean isValid(final String s) {
 
-        return isbn.length() == 10 &&
-                IntStream.rangeClosed(0, 8).filter(c -> isValidDigit(isbn.charAt(c))).count() == 9 &&
-                (isValidDigit(isbn.charAt(9)) || isbn.charAt(9) == 'X') &&
-                IntStream.rangeClosed(0, 9).map(i -> (10 - i) * calculateNumber(isbn.charAt(i))).sum() % 11 == 0;
+        String isbn = s.replace("-", "");
+
+        return isbn.length() == ISBN_LENGTH &&
+                IntStream.rangeClosed(0, ISBN_LENGTH - 2).
+                        filter(c -> isValidDigit(isbn.charAt(c)))
+                        .count() == 9 &&
+                (isValidDigit(isbn.charAt(ISBN_LENGTH - 1)) ||
+                        isbn.charAt(ISBN_LENGTH - 1) == 'X') &&
+                IntStream.rangeClosed(0, ISBN_LENGTH - 1)
+                        .map(i -> (ISBN_LENGTH - i) * calculateNumber(isbn.charAt(i)))
+                        .sum() % 11 == 0;
     }
 
     private static boolean isValidDigit(char c) {
-        return (Character.getNumericValue(c) >= 0) && (Character.getNumericValue(c) < 10);
+        return Character.getNumericValue(c) >= 0 && Character.getNumericValue(c) < 10;
     }
 
     private int calculateNumber(char c) {
-        if (c == 'X') return 10;
-        return Character.getNumericValue(c);
+        return (c == 'X') ? 10 : Character.getNumericValue(c);
     }
 
 }
