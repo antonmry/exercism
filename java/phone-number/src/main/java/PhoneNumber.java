@@ -12,7 +12,7 @@ class PhoneNumber {
         if (Pattern.matches(".*[:punct:]+.*", number))
             throw new IllegalArgumentException("punctuations not permitted");
 
-        this.number = number.replaceAll("\\D+", "");
+        this.number = number.replaceAll("\\d+", "");
 
         if (this.number.length() == 11 ) {
             if (this.number.startsWith("1")) {
