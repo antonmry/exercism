@@ -3,17 +3,23 @@ apply plugin: "eclipse"
 apply plugin: "idea"
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  testCompile "junit:junit:4.12"
+    testCompile "junit:junit:4.12"
 }
 
 test {
-  testLogging {
-    exceptionFormat = 'short'
-    showStandardStreams = true
-    events = ["passed", "failed", "skipped"]
-  }
+    testLogging {
+        exceptionFormat = 'short'
+        showStandardStreams = true
+        events = ["passed", "failed", "skipped"]
+    }
 }
+
+tasks.withType(JavaCompile) { options.compilerArgs += "--enable-preview" }
+
+tasks.withType(Test) { jvmArgs += "--enable-preview" }
+
+tasks.withType(JavaExec) { jvmArgs += '--enable-preview' }
