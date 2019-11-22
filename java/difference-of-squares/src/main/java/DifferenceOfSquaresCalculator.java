@@ -3,16 +3,14 @@ import java.util.stream.IntStream;
 class DifferenceOfSquaresCalculator {
 
     int computeSquareOfSumTo(int input) {
-
-        return IntStream.rangeClosed(1, input).sum() * IntStream.rangeClosed(1, input).sum();
+        return (int) Math.pow(IntStream.rangeClosed(1, input).sum(), 2);
     }
 
     int computeSumOfSquaresTo(int input) {
-        return IntStream.rangeClosed(1, input).map(v -> v*v).sum();
+        return input * (input + 1) * (2 * input + 1) / 6;
     }
 
     int computeDifferenceOfSquares(int input) {
         return computeSquareOfSumTo(input) - computeSumOfSquaresTo(input);
     }
-
 }
