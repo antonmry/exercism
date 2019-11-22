@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="QueenAttackCalculatorTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2019-11-22T19:41:49" hostname="gali7" time="0.017">
+  <properties/>
+  <testcase name="testNullPositionsNotAllowed" classname="QueenAttackCalculatorTest" time="0.008"/>
+  <testcase name="testCreateQueenMustHaveColumnOnBoard" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testCreateQueenMustHavePositiveRow" classname="QueenAttackCalculatorTest" time="0.001"/>
+  <testcase name="testCreateQueenMustHavePositiveColumn" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testCreateQueenWithAValidPosition" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCanAttackOnTheSameColumn" classname="QueenAttackCalculatorTest" time="0.002"/>
+  <testcase name="testCreateQueenMustHaveRowOnBoard" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCanAttackOnThirdDiagonal" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCanAttackOnSecondDiagonal" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCanAttackOnTheSameRow" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCanAttackOnFourthDiagonal" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensMustNotOccupyTheSameSquare" classname="QueenAttackCalculatorTest" time="0.001"/>
+  <testcase name="testQueensCanAttackOnFirstDiagonal" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <testcase name="testQueensCannotAttack" classname="QueenAttackCalculatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
