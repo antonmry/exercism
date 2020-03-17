@@ -1,83 +1,56 @@
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 class Markdown {
-  
-    String parse(String markdown) {
 
-        String[] lines = markdown.split("\n");
+    private Optional<String> endList = Optional.empty();
 
-        String result = "";
+    public String parse(String markdown) {
+        return Arrays.stream(markdown.split("\n")).map(line ->
+                switch (line.substring(0, 1)) {
+                    case "#" -> parseHeader(line);
+                    case "*" -> parseListItem(line);
+                    default -> parseParagraph(line);
+                }
+        ).collect(Collectors.joining()) + endList.orElse("");
+    }
 
-        boolean activeList = false;
-
-        for (int i = 0; i < lines.length; i++) {
-
-            String theLine = parseHeader(lines[i]);
-          
-            if (theLine == null) {
-              theLine = parseListItem(lines[i]);
-            }
-    
-            if (theLine == null) 
-            {
-                theLine = parseParagraph(lines[i]);
-            }
-
-            if (theLine.matches("(<li>).*") && !theLine.matches("(<h).*") && !theLine.matches("(<p>).*") && !activeList) {
-                activeList = true;
-              result = result + "<ul>";
-                result = result + theLine;
-            } 
-            
-            else if (!theLine.matches("(<li>).*") && activeList) {
-                activeList = false;
-                result = result + "</ul>";
-                result = result + theLine;
+    private String parseHeader(String line) {
+        return IntStream.range(1, line.length()).mapToObj(i -> {
+            if (line.startsWith(generateHeaderChars(i))
+                    && line.charAt(i) != '#') {
+                return "<h" + i + ">" + line.substring(i + 1) + "</h" + i + ">";
             } else {
-              result = result + theLine;
+                return "";
             }
-        }
-
-        if (activeList) {
-            result = result + "</ul>";
-        }
-
-        return result;
+        }).collect(Collectors.joining());
     }
 
-    private String parseHeader(String markdown) {
-        int count = 0;
-
-        for (int i = 0; i < markdown.length() && markdown.charAt(i) == '#'; i++) 
-        {
-            count++;
-        }
-
-        if (count == 0) { return null; }
-
-        return "<h" + Integer.toString(count) + ">" + markdown.substring(count + 1) + "</h" + Integer.toString(count)+ ">";
+    private String generateHeaderChars(int i) {
+        return IntStream.range(0, i).mapToObj(j -> "#").collect(Collectors.joining());
     }
 
-    private String parseListItem(String markdown) {
-        if (markdown.startsWith("*")) {
-            String skipAsterisk = markdown.substring(2);
-            String listItemString = parseSomeSymbols(skipAsterisk);
-            return "<li>" + listItemString + "</li>";
-        }
-
-        return null;
+    private String parseListItem(String line) {
+        return endList.map(o -> {
+            return "<li>" + parseBoldAndCursiveText(line.substring(2)) + "</li>";
+        }).orElseGet(() -> {
+            endList = Optional.of("</ul>");
+            return "<ul><li>" + parseBoldAndCursiveText(line.substring(2)) + "</li>";
+        });
     }
 
-    private String parseParagraph(String markdown) {
-        return "<p>" + parseSomeSymbols(markdown) + "</p>";
+    private String parseParagraph(String line) {
+        return endList.map(o -> {
+            endList = Optional.empty();
+            return "</ul><p>" + parseBoldAndCursiveText(line) + "</p>";
+        }).orElse("<p>" + parseBoldAndCursiveText(line) + "</p>");
     }
 
-    private String parseSomeSymbols(String markdown) {
-
-        String lookingFor = "__(.+)__";
-        String update = "<strong>$1</strong>";
-        String workingOn = markdown.replaceAll(lookingFor, update);
-
-        lookingFor = "_(.+)_";
-        update = "<em>$1</em>";
-        return workingOn.replaceAll(lookingFor, update);
+    private String parseBoldAndCursiveText(String line) {
+        return line.replaceAll("__(.+)__", "<strong>$1</strong>")
+                .replaceAll("_(.+)_", "<em>$1</em>");
     }
 }
+
