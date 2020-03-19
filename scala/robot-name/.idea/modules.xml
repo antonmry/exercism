@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot-name.iml" filepath="$PROJECT_DIR$/.idea/modules/robot-name.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot-name-build.iml" filepath="$PROJECT_DIR$/.idea/modules/robot-name-build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot-name_7822.iml" filepath="$PROJECT_DIR$/.idea/modules/robot-name_7822.iml" />
     </modules>
   </component>
 </project>
