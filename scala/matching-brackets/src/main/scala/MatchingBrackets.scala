@@ -5,19 +5,24 @@ object MatchingBrackets {
   def isPaired(text: String): Boolean = {
 
     val lastBracket = mutable.Stack[Char]()
-    val openBrackets = Array('[', '{', '(')
-    val closeBrackets = Array(']', '}', ')')
+    val brackets = List(('[', ']'), ('{', '}'), ('(', ')'))
 
-    (0 until text.length).foreach(v => {
-      if (openBrackets contains text.charAt(v)) {
-        lastBracket.push(text.charAt(v))
-      }
+    text.chars().forEach(c => {
+      brackets.
+        filter(_._1 == c).
+        foreach {
+          case (c, _) => lastBracket.push(c)
+        }
 
-      if (closeBrackets contains text.charAt(v)) {
-        if (lastBracket.isEmpty || lastBracket.pop() != openBrackets(closeBrackets.indexOf(text.charAt(v)))) return false
-      }
+      brackets.
+        filter(_._2 == c).
+        foreach {
+          case (openBracket, _) =>
+            if (lastBracket.isEmpty || lastBracket.pop() != openBracket) return false
+        }
     })
 
     lastBracket.isEmpty
   }
+
 }
