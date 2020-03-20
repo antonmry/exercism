@@ -93,6 +93,7 @@ fabric.properties
 
 .gradle/
 .idea/
+target/
 build/
 *.iml
 *.cache
