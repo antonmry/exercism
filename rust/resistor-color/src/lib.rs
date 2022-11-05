@@ -1,7 +1,8 @@
+use enum_iterator::{all, Sequence};
 use int_enum::IntEnum;
 
 #[repr(u32)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq, IntEnum)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Sequence, IntEnum)]
 pub enum ResistorColor {
     Black = 0,
     Blue = 6,
@@ -26,5 +27,7 @@ pub fn value_to_color_string(value: u32) -> String {
 }
 
 pub fn colors() -> Vec<ResistorColor> {
-    unimplemented!("return a list of all the colors ordered by resistance")
+    let mut colors = all::<ResistorColor>().collect::<Vec<_>>();
+    colors.sort_by_key(|c| c.int_value());
+    colors
 }
