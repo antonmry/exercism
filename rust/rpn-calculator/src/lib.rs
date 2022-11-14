@@ -7,11 +7,12 @@ pub enum CalculatorInput {
     Value(i32),
 }
 
+// Example
 pub fn evaluate(inputs: &[CalculatorInput]) -> Option<i32> {
     let mut stack: Vec<i32> = Vec::new();
 
-    for n in inputs {
-        let temp = match n {
+    for input in inputs {
+        let stack_entry = match input {
             CalculatorInput::Add if stack.len() >= 2 => stack.pop().unwrap() + stack.pop().unwrap(),
             CalculatorInput::Subtract if stack.len() >= 2 => {
                 -1 * stack.pop().unwrap() + stack.pop().unwrap()
@@ -27,7 +28,7 @@ pub fn evaluate(inputs: &[CalculatorInput]) -> Option<i32> {
             _ => return None,
         };
 
-        stack.push(temp);
+        stack.push(stack_entry);
     }
 
     match stack.len() {
