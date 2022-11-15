@@ -1,7 +1,7 @@
-extern crate unicode_segmentation;
-use unicode_segmentation::UnicodeSegmentation;
+// extern crate unicode_segmentation;
+// use unicode_segmentation::UnicodeSegmentation;
 
 pub fn reverse(input: &str) -> String {
-    input.graphemes(true).rev().collect()
-    // input.chars().rev().collect::<String>()
+    //input.graphemes(true).rev().collect()
+    input.chars().rev().collect::<String>()
 }
